@@ -13,5 +13,3 @@ class db_connector:
         return cur.fetchall()
 
 my_db = db_connector(['postgres', 'qwerty'], ['parking', 'localhost'])
-
-print(my_db.execute_query("select * from access_logs"))
