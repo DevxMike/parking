@@ -1,0 +1,9 @@
+uart_rx_buffer.h:22:5:buffer::buffer()	16	static
+uart_rx_buffer.h:27:10:bool buffer::is_empty() volatile	16	static
+uart_api.h:52:5:packet::packet(packet_defs::callback_type, void*)	24	static
+parking_app.cpp:16:6:void _run_app()	8	static
+parking_app.cpp:28:6:static void parking_app::main()	16	static
+parking_app.cpp:41:6:static void parking_app::packet_callback(const packet_structure&, void*)	16	static
+parking_app.cpp:50:6:void HAL_UART_RxCpltCallback(UART_HandleTypeDef*)	16	static
+parking_app.cpp:53:1:void __static_initialization_and_destruction_0(int, int)	16	static
+parking_app.cpp:53:1:cpp)	8	static

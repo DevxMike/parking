@@ -1,0 +1,5 @@
+uart_api.cpp:9:32:packet_defs::packet_structure& packet_defs::packet_structure::operator=(const packet_structure&)	24	static
+uart_api.cpp:22:9:uint8_t packet::get_crc(const packet_structure&) const	24	static
+uart_api.cpp:34:6:void packet::serialize_data(const packet_structure&)	24	static
+uart_api.cpp:49:6:void packet::deserialize_data(const uint8_t*, uint8_t)	40	static
+uart_api.cpp:99:38:const packet_structure& packet::get_packet() const	16	static

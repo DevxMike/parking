@@ -1,0 +1,2 @@
+uart_rx_buffer.cpp:10:6:void buffer::write_to_buffer(char) volatile	16	static
+uart_rx_buffer.cpp:15:6:char buffer::read_from_buffer() volatile	32	static
