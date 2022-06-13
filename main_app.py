@@ -1,4 +1,3 @@
-from tkinter import Pack
 import cv2
 from serial_connection import stm_serial_handle
 from serial_connection import Packet
@@ -34,6 +33,7 @@ def print_reports(reports : list) -> None:
         print(f"{entries}")
 
 def main():
+    global millis
     stm_serial_handle.write(Packet(0, "close").get_packet()) #close the gate at start
 
     while(True):
@@ -43,7 +43,8 @@ def main():
         plate = recognise.recognise() #try to recognise registration plate
         if(plate != None): #if plate`s been recognised
             print(plate)
-        
+            plate = plate[0:len(plate) - 1]
+
         if(plate != None):
             database_wrapper.insert_log(plate)
 

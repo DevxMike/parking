@@ -39,14 +39,3 @@ while not_connected:
 
     except:
         print("Brak urządzenia STM32")
-
-import time
-
-for i in range(0, 10, 1):
-    tmp_packet = Packet(0, "open")
-    stm_serial_handle.write(tmp_packet.get_packet())
-    time.sleep(1)
-
-    tmp_packet = Packet(0, "close")
-    stm_serial_handle.write(tmp_packet.get_packet())
-    time.sleep(1)

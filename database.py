@@ -10,6 +10,10 @@ class db_connector:
     def execute_query(this, query):
         cur = this.connection.cursor()
         cur.execute(query)
-        return cur.fetchall()
+        try:
+            result = cur.fetchall()
+            return  result
+        except:
+            print("Done with no result")
 
 my_db = db_connector(['postgres', 'qwerty'], ['parking', 'localhost'])
