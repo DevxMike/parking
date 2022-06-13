@@ -25,3 +25,6 @@ class db_wrapper:
     def get_report_5(this):
         return my_db.execute_query("SELECT count(access_logs.log_id) as \"cars parked\" from approved_registration_plates, access_logs\
             WHERE DATE(access_logs.log_date) = CURRENT_DATE AND approved_registration_plates.plate_num = access_logs.plate_num")
+    
+    def insert_log(this, registration_plate):
+        my_db.execute_query(f"INSERT INTO access_logs (plate_num) VALUES ('{registration_plate}');")
