@@ -28,7 +28,7 @@ def print_reports(reports : list) -> None:
     for approved in reports[3]:
         print(f"{approved}")
 
-    print("Ilość samochodów, które wjechały na parking:")
+    print("Ilość poprawnych odczytów, (odczyt rejestracji samochodów, które mogą wjechać):")
     for entries in reports[4]:
         print(f"{entries}")
 
