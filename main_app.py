@@ -12,6 +12,27 @@ report_generator = read_only_ui()
 database_wrapper = db_wrapper()
 millis = time.time() * 1000
 
+def print_reports(reports : list) -> None:
+    print("Ilość samochodów w danym roku:")
+    for entries, year in reports[0]:
+        print(f"{year}: {entries}")
+
+    print("Ilość samochodów w danym miesiącu w roku 2022:")
+    for entries, month in reports[1]:
+        print(f"{month}: {entries}")
+    
+    print("Ilość prób dostępu w tym dniu:")
+    for entries in reports[2]:
+        print(f"{entries}")
+
+    print("Samochody, które mogą wjechać:")
+    for approved in reports[3]:
+        print(f"{approved}")
+
+    print("Ilość samochodów, które wjechały na parking:")
+    for entries in reports[4]:
+        print(f"{entries}")
+
 def main():
     stm_serial_handle.write(Packet(0, "close").get_packet()) #close the gate at start
 
@@ -34,7 +55,7 @@ def main():
 
         if(time.time() * 1000 - millis > 5000): #get reports every 5 seconds
             reports = report_generator.get_reports()
-
+            print_reports(reports)
             millis = time.time() * 1000
 
         if cv2.waitKey(1) & 0xFF == ord('q'): #end program if user pressed q
