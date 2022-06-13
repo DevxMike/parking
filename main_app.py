@@ -5,10 +5,12 @@ from serial_connection import Packet
 from simple_ui import read_only_ui
 from rp_recognition import registration_plates_recognition
 from db_wrapper import db_wrapper
+import time
 
 vid = cv2.VideoCapture(0) #get video
 report_generator = read_only_ui()
 database_wrapper = db_wrapper()
+millis = time.time() * 1000
 
 def main():
     stm_serial_handle.write(Packet(0, "close").get_packet()) #close the gate at start
@@ -21,8 +23,8 @@ def main():
         if(plate != None): #if plate`s been recognised
             print(plate)
         
-        #if(plate != None):
-
+        if(plate != None):
+            database_wrapper.insert_log(plate)
 
         if(plate != None and database_wrapper.check_if_rp_exists(plate) >= 1):
             stm_serial_handle.write(Packet(0, "open").get_packet())
@@ -30,7 +32,10 @@ def main():
         else:
             stm_serial_handle.write(Packet(0, "close").get_packet())
 
-        reports = report_generator.get_reports()
+        if(time.time() * 1000 - millis > 5000): #get reports every 5 seconds
+            reports = report_generator.get_reports()
+
+            millis = time.time() * 1000
 
         if cv2.waitKey(1) & 0xFF == ord('q'): #end program if user pressed q
             break
