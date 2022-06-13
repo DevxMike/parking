@@ -23,5 +23,5 @@ class db_wrapper:
         return my_db.execute_query("SELECT approved_registration_plates.plate_num FROM approved_registration_plates ORDER BY approved_registration_plates.plate_num ASC")
 
     def get_report_5(this):
-        return my_db("SELECT count(access_logs.log_id) as \"cars parked\" from approved_registration_plates, access_logs\
+        return my_db.execute_query("SELECT count(access_logs.log_id) as \"cars parked\" from approved_registration_plates, access_logs\
             WHERE DATE(access_logs.log_date) = CURRENT_DATE AND approved_registration_plates.plate_num = access_logs.plate_num")
